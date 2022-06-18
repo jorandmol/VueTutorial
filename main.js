@@ -14,4 +14,5 @@ const app = Vue.createApp({
             if (index >= 0) this.cart.splice(index, 1)
         }
     }
-})
+  })
+  
