@@ -19,9 +19,12 @@
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-            <!-- solution -->
-            <a :href="url">Made by Vue Mastery</a>
-           <!-- solution -->
+            <p v-if="onSale">On sale!</p>
+            <p v-if="stock >= 10">In stock</p>
+            <p v-else-if="stock < 10 && stock > 0">Almost sold out!</p>
+            <p v-else>Out of stock</p>
+            <!-- Only make the element visible/invisble, not remove from DOM -->
+            <!-- <p v-show="inStock">In stock</p> -->
           </div>
         </div>
       </div>
