@@ -2,6 +2,9 @@ app.component('product-display', {
     props: {
         premium: {
             type: Boolean, required: true
+        },
+        cart: {
+            type: Array, required: true
         }
     },
     template:
@@ -24,6 +27,7 @@ app.component('product-display', {
                 <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{ backgroundColor: variant.color}"></div>
                 <!-- backgroundColor == 'background-color' -->
                 <button class="button" :class="{ disabledButton: !inStock}" :disabled="!inStock" @click="addToCart">Add to Cart</button>
+                <button class="button" v-if="cart.indexOf(productId) >= 0" @click="removeFromCart">Remove from Cart</button>
             </div>
         </div>
     </div>
@@ -41,11 +45,6 @@ app.component('product-display', {
             onSale: true
         }
     },
-    methods: {
-        updateVariant(index) {
-            this.selectedVariant = index
-        }
-    },
     computed: {
         productTitle() {
             return `${this.brand} ${this.product}`
@@ -61,6 +60,20 @@ app.component('product-display', {
         },
         shipping() {
             return this.premium ? 'free' : '2,99 €'
+        },
+        productId() {
+            return this.variants[this.selectedVariant].id
+        }
+    },
+    methods: {
+        updateVariant(index) {
+            this.selectedVariant = index
+        },
+        addToCart() {
+            this.$emit('add-to-cart', this.productId)
+        },
+        removeFromCart() {
+            this.$emit('remove-from-cart', this.productId)
         }
     }
 })
