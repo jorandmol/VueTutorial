@@ -6,7 +6,11 @@
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
+<<<<<<< HEAD
     <script src="https://unpkg.com/vue@3"></script>
+=======
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+>>>>>>> origin/L3-end
   </head>
   <body>
     <div id="app">
@@ -15,13 +19,13 @@
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
-            <!-- image goes here -->
             <img v-bind:src="image">
-            <!-- Another way of binding data => <img :src="image"> -->
-            <a v-bind:href="url">See details</a>
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
+            <!-- solution -->
+            <a :href="url">Made by Vue Mastery</a>
+           <!-- solution -->
           </div>
         </div>
       </div>
