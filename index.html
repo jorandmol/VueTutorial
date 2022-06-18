@@ -16,6 +16,9 @@
         <div class="product-container">
           <div class="product-image">
             <!-- image goes here -->
+            <img v-bind:src="image">
+            <!-- Another way of binding data => <img :src="image"> -->
+            <a v-bind:href="url">See details</a>
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
